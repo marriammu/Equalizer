@@ -487,6 +487,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.window.show()
 
     def readsignal(self):
+        
         self.fname=QtGui.QFileDialog.getOpenFileName(self,' txt or CSV or xls',"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)")
         self.path=self.fname[0]
         self.comboBox.show()
@@ -496,6 +497,13 @@ class Ui_MainWindow(QtGui.QMainWindow):
                 self.equalizers[i].show()
             self.data,self.fs = librosa.load(os.path.basename(self.path),sr = None, mono = True,offset = 0.0,duration = None)
             self.Fourier()
+            ## For converting wav to txt
+            # s=[]
+            # for i in self.data:
+            #     s.append(str(i))
+            # # for i in samples:
+            #     with open('wave2.txt', 'w') as f:
+            #         f.writelines("%s\n" % x for x in s)
 
         else:
             for i in range(0,10):
